@@ -1,9 +1,6 @@
-from flask import Flask, request, jsonify
 import re
 
-app = Flask(__name__)
-
-def is_valid_password(password):
+def validate_rule1(password):
     if len(password) < 8:
         return False, "Password must be at least 8 characters long."
     if not (password[0].islower() and password[-1].islower()):
@@ -23,12 +20,3 @@ def is_valid_password(password):
 
     return True, "Password is valid!"
 
-@app.route("/validate_rule1", methods=["POST"])
-def validate_rule1():
-    data = request.json
-    password = data.get("password", "")
-    valid, message = is_valid_password(password)
-    return jsonify({"valid": valid, "message": message})
-
-if __name__ == "__main__":
-    app.run(debug=True)
