@@ -1,7 +1,3 @@
-python3 app1.py
-
-
-
 from flask import Flask, request, jsonify
 from rule1 import validate_rule1
 from rule2 import validate_rule2
